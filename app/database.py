@@ -10,8 +10,7 @@ SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
 # Настройка движка специально для работы с SSL в Neon/asyncpg
 engine = create_async_engine(
     SQLALCHEMY_DATABASE_URL,
-    connect_args={"ssl": True},  # Вот здесь мы включаем SSL правильно для asyncpg
-    echo=True                    # Включаем логи, чтобы видеть SQL-запросы в терминале
+    echo=True
 )
 
 async_session_local = async_sessionmaker(
