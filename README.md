@@ -10,14 +10,28 @@
 * **Validation:** [Pydantic v2](https://docs.pydantic.dev/)
 * **Environment:** Python 3.9+
 
----
 
-## 🛠 Архитектура проекта
 
-```text
-app/
-├── main.py          # Точка входа, настройка эндпоинтов и CORS
-├── database.py      # Подключение к БД и настройка сессий
-├── models.py        # SQLAlchemy модели (таблицы masters и services)
-├── schemas.py       # Pydantic схемы для валидации запросов/ответов
-└── crud.py          # Логика работы с базой данных
+📦 Быстрый старт
+
+1. Клонирование репозитория
+git clone [https://github.com/ВАШ_ЛОГИН/beauty_marketplace_api.git](https://github.com/ВАШ_ЛОГИН/beauty_marketplace_api.git)
+cd beauty_marketplace_api
+
+2. Настройка виртуального окружения
+python -m venv venv
+# Для Windows:
+venv\Scripts\activate
+# Для Mac/Linux:
+source venv/bin/activate
+
+3. Установка зависимостей
+pip install -r requirements.txt
+
+4. Конфигурация (Environment)
+Создайте файл .env в корне проекта и добавьте строку подключения к вашей базе данных Neon:
+DATABASE_URL=postgresql+asyncpg://user:password@host/dbname
+Примечание: убедитесь, что в базе включен SSL (в коде database.py уже прописан connect_args={"ssl": True}).
+
+5. Запуск сервера
+uvicorn app.main:app --reload
